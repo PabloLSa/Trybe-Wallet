@@ -36,7 +36,7 @@ class Login extends React.Component {
 
   handleClick = () => {
     const { history } = this.props;
-    history.push('/carteira');
+    return history.push('/carteira');
   };
 
   render() {

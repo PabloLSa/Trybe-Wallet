@@ -9,10 +9,12 @@ class Routes extends Component {
       <div>
         <Switch>
           <Route
+            exact
             path="/"
             component={ Login }
           />
           <Route
+            exact
             path="/carteira"
             component={ Wallet }
           />
