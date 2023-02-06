@@ -1,7 +1,10 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Table extends Component {
   render() {
+    const { expenses } = this.props;
     return (
       <div>
         Table
@@ -20,7 +23,34 @@ class Table extends Component {
             </tr>
           </thead>
           <tbody>
-            {/* Aqui você pode inserir as linhas da tabela com os dados */}
+            { expenses.map((expense) => (
+              <tr key={ expense.id }>
+                <td>{ expense.description }</td>
+                <td>{ expense.tag }</td>
+                <td>{ expense.method }</td>
+                <td>{ expense.value }</td>
+                <td>
+                  { expense.exchangeRates[expense
+                    .currency].name}
+
+                </td>
+                <td>{Number(expense.value).toFixed(2)}</td>
+                <td>
+                  {
+                    Number(expense.exchangeRates[expense
+                      .currency].ask).toFixed(2)
+                  }
+
+                </td>
+                <td>
+                  { (Number(expense.value) * Number(expense
+                    .exchangeRates[expense.currency].ask)).toFixed(2) }
+
+                </td>
+                <td>REAL</td>
+
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -28,4 +58,13 @@ class Table extends Component {
   }
 }
 
-export default Table;
+Table.propTypes = {
+  expenses: PropTypes.shape({
+    map: PropTypes.func,
+  }),
+}.isRequired;
+const mapStateToProps = (globalState) => ({
+  expenses: globalState.wallet.expenses,
+});
+
+export default connect(mapStateToProps)(Table);
