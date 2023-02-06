@@ -18,3 +18,9 @@ export const addExpenses = (expenses) => ({
   type: ADD_EXPENSES,
   expenses,
 });
+
+export const ACTION_DELETE = 'ACTION_DELETE';
+export const actionDelete = (expenses) => ({
+  type: ACTION_DELETE,
+  expenses,
+});
