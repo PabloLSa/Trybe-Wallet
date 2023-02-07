@@ -7,41 +7,35 @@ class Login extends React.Component {
   state = {
     isDisable: true,
     passWord: '',
-
+    email: '',
   };
 
   verifyPasswordAndEmail = () => {
-    const { email } = this.props;
-    const { passWord } = this.state;
+    const { passWord, email } = this.state;
     const number = 6;
-    const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const emailRegex = /^[\w+.]+@\w+\.com$/;
     const pass = passWord.length >= number && emailRegex.test(email);
     this.setState({
       isDisable: !pass,
     });
   };
 
-  handleChangePassword = ({ target }) => {
-    const { value } = target;
+  handleChangeEmailaAndPassWord = ({ target }) => {
+    const { name, value } = target;
     this.setState({
-      passWord: value,
-    }, this.verifyPasswordAndEmail);
-  };
-
-  handleChangeEmail = ({ target }) => {
-    const { value } = target;
-    const { dispatch } = this.props;
-    dispatch(addEmail(value));
+      [name]: value,
+    }, () => this.verifyPasswordAndEmail());
   };
 
   handleClick = () => {
-    const { history } = this.props;
+    const { email } = this.state;
+    const { history, dispatch } = this.props;
+    dispatch(addEmail(email));
     return history.push('/carteira');
   };
 
   render() {
-    const { isDisable, passWord } = this.state;
-    const { email } = this.props;
+    const { isDisable, passWord, email } = this.state;
     return (
       <div>
         Login
@@ -49,13 +43,17 @@ class Login extends React.Component {
           data-testid="email-input"
           type="email"
           value={ email }
-          onChange={ this.handleChangeEmail }
+          name="email"
+          placeholder="Email"
+          onChange={ this.handleChangeEmailaAndPassWord }
         />
         <input
           data-testid="password-input"
           type="password"
           value={ passWord }
-          onChange={ this.handleChangePassword }
+          placeholder="Password"
+          name="passWord"
+          onChange={ this.handleChangeEmailaAndPassWord }
         />
         <button
           type="button"
