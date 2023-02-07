@@ -24,3 +24,15 @@ export const actionDelete = (expenses) => ({
   type: ACTION_DELETE,
   expenses,
 });
+
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+export const editExpense = (editId) => ({
+  type: EDIT_EXPENSE,
+  editId,
+});
+export const SAVE_EDITION_ACTION = 'SAVE_EDITION_ACTION';
+
+export const saveEditonAction = (expenseEdited) => ({
+  type: SAVE_EDITION_ACTION,
+  expenseEdited,
+});

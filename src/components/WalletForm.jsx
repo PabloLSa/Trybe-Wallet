@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addExpenses, cuRrencies } from '../redux/actions';
+import { addExpenses, cuRrencies, saveEditonAction } from '../redux/actions';
 
 class WalletForm extends Component {
   state = {
@@ -22,11 +22,31 @@ class WalletForm extends Component {
     dispatch(cuRrencies(curr));
   }
 
+  componentDidUpdate(prevProp) {
+    const { isEditing, idToEdit, expenses } = this.props;
+    if (prevProp.idToEdit !== idToEdit && isEditing) {
+      const expenseToEdit = expenses
+        .find((expense) => Number(expense.id) === Number(idToEdit));
+      this.setState({
+        ...expenseToEdit,
+      });
+    }
+  }
+
   createCurrencies = async () => {
     const response = await fetch('https://economia.awesomeapi.com.br/json/all');
     const data = await response.json();
     delete data.USDT;
     return data;
+  };
+
+  saveEditon = (state) => {
+    const { idToEdit, dispatch } = this.props;
+    const editExpense = {
+      ...state,
+      id: Number(idToEdit),
+    };
+    dispatch(saveEditonAction(editExpense));
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -53,7 +73,7 @@ class WalletForm extends Component {
 
   render() {
     const { value, description, currency, method, tag } = this.state;
-    const { currencies } = this.props;
+    const { currencies, isEditing } = this.props;
     return (
       <div>
         WalletForm
@@ -78,6 +98,7 @@ class WalletForm extends Component {
           onChange={ this.handleChange }
         >
           {
+            // const coins = currencies.filter((e) => e.code !== 'USDT')
             currencies.map((currencie) => (
               <option value={ currencie } key={ currencie }>
                 { currencie }
@@ -108,14 +129,25 @@ class WalletForm extends Component {
           <option value="Transporte">Transporte</option>
           <option value="Saúde">Saúde</option>
         </select>
-        <button onClick={ this.saveExpense }>
-          Adicionar despesa
+        <button
+          onClick={ () => {
+            if (!isEditing) {
+              this.saveExpense();
+            } else {
+              this.saveEditon(this.state);
+            }
+          } }
+        >
+
+          {
+
+            isEditing ? 'Editar despesa' : 'Adicionar despesa'
+          }
         </button>
       </div>
     );
   }
 }
-
 WalletForm.propTypes = {
   currencies: PropTypes.shape({
     map: PropTypes.func,
@@ -124,5 +156,8 @@ WalletForm.propTypes = {
 }.isRequired;
 const mapStateToProps = (globalState) => ({
   currencies: globalState.wallet.currencies,
+  expenses: globalState.wallet.expenses,
+  isEditing: globalState.wallet.isEditing,
+  idToEdit: globalState.wallet.idToEdit,
 });
 export default connect(mapStateToProps)(WalletForm);

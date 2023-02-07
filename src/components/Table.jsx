@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actionDelete } from '../redux/actions';
+import { actionDelete, editExpense } from '../redux/actions';
 
 class Table extends Component {
+  expenseEdition = ({ target }) => {
+    const { dispatch } = this.props;
+    dispatch(editExpense(target.id));
+  };
+
   expenseDelete = ({ target }) => {
     const { dispatch, expenses } = this.props;
     const newExpenses = expenses.filter((expense) => Number(expense.id) !== Number(target
@@ -64,6 +69,13 @@ class Table extends Component {
                     onClick={ (event) => this.expenseDelete(event) }
                   >
                     Excluir
+                  </button>
+                  <button
+                    id={ expense.id }
+                    data-testid="edit-btn"
+                    onClick={ (event) => this.expenseEdition(event) }
+                  >
+                    Editar despesa
                   </button>
                 </td>
               </tr>
