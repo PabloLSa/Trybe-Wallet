@@ -36,14 +36,23 @@ const walletReducer = (state = INITIAL_STATE, action) => {
   case SAVE_EDITION_ACTION:
     return {
       ...state,
-      expenses: state.expenses.map((expense) => {
-        if (Number(expense.id) === Number(state.idToEdit)) {
-          return {
-            ...expense,
-            ...action.expenseEdited,
-          };
-        } return expense;
-      }),
+      // expenses: state.expenses.map((expense) => {
+      //   if (Number(expense.id) === Number(state.idToEdit)) {
+      //     return {
+      //       ...expense,
+      //       ...action.expenseEdited,
+      //     };
+      //   } return expense;
+      // }),
+      expenses: [
+        ...state.expenses
+          .filter((expense) => Number(expense.id) !== Number(state.idToEdit)),
+        {
+          ...state.expenses
+            .find((expense) => Number(expense.id) === Number(state.idToEdit)),
+          ...action.expenseEdited,
+        },
+      ].sort((a, b) => a.id - b.id),
       isEditing: false,
     };
   default:
