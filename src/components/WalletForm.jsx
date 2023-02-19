@@ -77,58 +77,80 @@ class WalletForm extends Component {
     return (
       <div>
         WalletForm
-        <input
-          data-testid="value-input"
-          type="number"
-          name="value"
-          value={ value }
-          onChange={ this.handleChange }
-        />
-        <input
-          data-testid="description-input"
-          type="text"
-          name="description"
-          value={ description }
-          onChange={ this.handleChange }
-        />
-        <select
-          data-testid="currency-input"
-          name="currency"
-          value={ currency }
-          onChange={ this.handleChange }
-        >
-          {
-            // const coins = currencies.filter((e) => e.code !== 'USDT')
-            currencies.map((currencie) => (
-              <option value={ currencie } key={ currencie }>
-                { currencie }
-              </option>
-            ))
-          }
+        <label htmlFor="description">
+          Descrição da despesa
+          <input
+            data-testid="description-input"
+            type="text"
+            name="description"
+            value={ description }
+            onChange={ this.handleChange }
+            id="description"
+          />
+        </label>
+        <label htmlFor="tag">
+          Categoria da despesa
+          <select
+            data-testid="tag-input"
+            name="tag"
+            onChange={ this.handleChange }
+            value={ tag }
+            id="tag"
+          >
+            <option value="Alimentação">Alimentação</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Trabalho">Trabalho</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Saúde">Saúde</option>
+          </select>
+        </label>
+        <label htmlFor="value">
+          Valor
+          <input
+            data-testid="value-input"
+            type="number"
+            name="value"
+            value={ value }
+            onChange={ this.handleChange }
+            id="value"
+          />
+        </label>
+        <label htmlFor="method">
+          Método de pagamento
+          <select
+            data-testid="method-input"
+            name="method"
+            onChange={ this.handleChange }
+            value={ method }
+            id="method"
+          >
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Cartão de crédito">Cartão de crédito</option>
+            <option value="Cartão de débito">Cartão de débito</option>
+          </select>
+        </label>
 
-        </select>
-        <select
-          data-testid="method-input"
-          name="method"
-          onChange={ this.handleChange }
-          value={ method }
-        >
-          <option value="Dinheiro">Dinheiro</option>
-          <option value="Cartão de crédito">Cartão de crédito</option>
-          <option value="Cartão de débito">Cartão de débito</option>
-        </select>
-        <select
-          data-testid="tag-input"
-          name="tag"
-          onChange={ this.handleChange }
-          value={ tag }
-        >
-          <option value="Alimentação">Alimentação</option>
-          <option value="Lazer">Lazer</option>
-          <option value="Trabalho">Trabalho</option>
-          <option value="Transporte">Transporte</option>
-          <option value="Saúde">Saúde</option>
-        </select>
+        <label htmlFor="currency">
+          Moeda
+          <select
+            data-testid="currency-input"
+            name="currency"
+            id="currency"
+            value={ currency }
+            onChange={ this.handleChange }
+          >
+            {
+            // const coins = currencies.filter((e) => e.code !== 'USDT')
+              currencies.map((currencie) => (
+                <option value={ currencie } key={ currencie }>
+                  { currencie }
+                </option>
+              ))
+            }
+
+          </select>
+        </label>
+
         <button
           onClick={ () => {
             if (!isEditing) {

@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addEmail } from '../redux/actions';
+import logo from '../img/logo.svg';
+import styles from './styles/Login.module.css';
 
 class Login extends React.Component {
   state = {
@@ -37,32 +39,35 @@ class Login extends React.Component {
   render() {
     const { isDisable, passWord, email } = this.state;
     return (
-      <div>
-        Login
-        <input
-          data-testid="email-input"
-          type="email"
-          value={ email }
-          name="email"
-          placeholder="Email"
-          onChange={ this.handleChangeEmailaAndPassWord }
-        />
-        <input
-          data-testid="password-input"
-          type="password"
-          value={ passWord }
-          placeholder="Password"
-          name="passWord"
-          onChange={ this.handleChangeEmailaAndPassWord }
-        />
-        <button
-          type="button"
-          disabled={ isDisable }
-          onClick={ this.handleClick }
-        >
-          Entrar
+      <div className={ styles.containerPrincipal }>
 
-        </button>
+        <div className={ styles.containerLogin }>
+          <img src={ logo } alt="logo" />
+          <input
+            data-testid="email-input"
+            type="email"
+            value={ email }
+            name="email"
+            placeholder="Email"
+            onChange={ this.handleChangeEmailaAndPassWord }
+          />
+          <input
+            data-testid="password-input"
+            type="password"
+            value={ passWord }
+            placeholder="Password"
+            name="passWord"
+            onChange={ this.handleChangeEmailaAndPassWord }
+          />
+          <button
+            type="button"
+            disabled={ isDisable }
+            onClick={ this.handleClick }
+          >
+            Entrar
+
+          </button>
+        </div>
       </div>
 
     );

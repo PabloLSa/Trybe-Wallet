@@ -1,0 +1,50 @@
+.containerPrincipal {
+  align-items: center;
+  background-color: #03e491;
+  background-image: url('../../img/fundo.svg');
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+
+}
+
+.containerLogin {
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  height: 356px;
+  justify-content: center;
+  left: 377px;
+  top: 201px;
+  width: 525px;
+}
+
+.containerLogin button {
+  background-color: blue;
+  border: 1px solid #003be5;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: white;
+  height: 40px;
+  width: 330px;
+}
+
+.containerLogin img {
+  margin-bottom: 10%;
+}
+
+.containerLogin input {
+  background: white;
+  border: 1px solid #003be5;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 40px;
+  padding: 1em;
+  width: 90%;
+}
+

@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import logo from '../img/logo.svg';
+import vector from '../img/vector.png';
+import Vector from '../img/Vector.png';
+import styles from './styles/Header.module.css';
 
 class Header extends Component {
   render() {
@@ -12,16 +16,25 @@ class Header extends Component {
       return acc + Number(curr.value) * Number(ask);
     }, 0);
     return (
-      <div>
-        <span data-testid="email-field">
-          { email }
-        </span>
-        <span data-testid="total-field">
-          { sum.toFixed(2) }
-        </span>
-        <span data-testid="header-currency-field">
-          BRL
-        </span>
+      <div className={ styles.containerHeader }>
+        <img src={ logo } alt="logo" />
+        <p className={ styles.despesas }>
+          <img src={ Vector } alt="Vector" />
+          Total de despesas:
+          <span data-testid="total-field">
+            { sum.toFixed(2) }
+          </span>
+          <span data-testid="header-currency-field">
+            BRL
+          </span>
+        </p>
+        <p>
+          <img src={ vector } alt="vector" />
+          <span className={ styles.email } data-testid="email-field">
+            { email }
+          </span>
+        </p>
+
       </div>
     );
   }
