@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import styles from './styles/WalletForm.module.css';
 import { addExpenses, cuRrencies, saveEditonAction } from '../redux/actions';
 
 class WalletForm extends Component {
@@ -75,11 +76,11 @@ class WalletForm extends Component {
     const { value, description, currency, method, tag } = this.state;
     const { currencies, isEditing } = this.props;
     return (
-      <div>
-        WalletForm
-        <label htmlFor="description">
+      <div className={ styles.walletForm }>
+        <label htmlFor="description" className={ styles.description }>
           Descrição da despesa
           <input
+            className="description-input"
             data-testid="description-input"
             type="text"
             name="description"

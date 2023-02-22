@@ -1,0 +1,10 @@
+.wallet {
+  align-items: center;
+  background-color: #03e491;
+  background-image: url('../../img/fundo.svg');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}

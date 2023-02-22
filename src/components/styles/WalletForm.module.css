@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.walletForm {
+  align-items: center;
+  background-color: rgba(225, 229, 235, 0.49);
+  display: flex;
+  height: 20vh;
+  justify-content: space-around;
+  width: 70vw;
+}
+
+.description {
+  align-items: center;
+  color: #003be5;
+  display: flex;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  height: 14px;
+  line-height: 14px;
+  width: 209.72px;
+}
+
+.description-input {
+  border: 1px solid #003be5;
+  border-radius: 5px;
+  height: 30px;
+  width: 288.86px;
+}
+

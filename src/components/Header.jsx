@@ -17,7 +17,7 @@ class Header extends Component {
     }, 0);
     return (
       <div className={ styles.containerHeader }>
-        <img src={ logo } alt="logo" />
+        <img className={ styles.logoTipo } src={ logo } alt="logo" />
         <p className={ styles.despesas }>
           <img src={ Vector } alt="Vector" />
           Total de despesas:
@@ -28,12 +28,12 @@ class Header extends Component {
             BRL
           </span>
         </p>
-        <p>
+        <div className={ styles.displayEmail }>
           <img src={ vector } alt="vector" />
           <span className={ styles.email } data-testid="email-field">
             { email }
           </span>
-        </p>
+        </div>
 
       </div>
     );
