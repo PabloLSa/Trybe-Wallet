@@ -80,7 +80,7 @@ class WalletForm extends Component {
         <label htmlFor="description" className={ styles.description }>
           Descrição da despesa
           <input
-            className="description-input"
+            className={styles.discriptioninput}
             data-testid="description-input"
             type="text"
             name="description"
