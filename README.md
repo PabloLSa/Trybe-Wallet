@@ -36,3 +36,5 @@ Conectar Redux aos componentes React.
 
 Adicionar mais de um reducer a uma store.
 
+![logo](../src//styles/img/logo.svg)
+
