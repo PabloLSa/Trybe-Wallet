@@ -2,17 +2,22 @@
   margin: 0;
   padding: 0;
 }
+.formwallet{
+  display: flex;
+  flex-direction: column;
+}
 
 .walletForm {
   align-items: center;
-  background-color: rgba(225, 229, 235, 0.49);
+  flex-wrap: wrap;
+  background-color: rgba(225, 229, 235, 0.30);
   display: flex;
   height: 20vh;
   justify-content: space-around;
   width: 70vw;
 }
 
-.description {
+.label {
   align-items: center;
   color: #003be5;
   display: flex;
@@ -22,14 +27,44 @@
   font-weight: 700;
   height: 14px;
   line-height: 14px;
-  width: 209.72px;
+  /* width: 209.72px; */
   gap: 1em;
-}
+} 
 
-.discriptioninput{
+.input{
   border: 1px solid #003be5;
+  color: #003be5;
   border-radius: 5px;
   height: 30px;
   width: 288.86px;
 }
+
+.value{
+  border: 1px solid #003be5;
+  color: #003be5;
+  border-radius: 5px;
+  height: 30px;
+  width: 188.86px;
+}
+
+.button{
+  align-items: center;
+  flex-wrap: wrap;
+  background-color:white;
+  display: flex;
+  height: 11vh;
+  justify-content: space-around;
+  width: 70vw;
+}
+.btt{
+  width: 330px;
+  height: 40px;
+  left: 475px;
+  top: 318px;
+  background: #2FC18C;
+  border: 1px solid #2FC18C;
+  border-radius: 5px;
+  color: white;
+}
+
 

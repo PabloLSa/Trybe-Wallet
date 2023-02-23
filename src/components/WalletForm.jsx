@@ -76,97 +76,117 @@ class WalletForm extends Component {
     const { value, description, currency, method, tag } = this.state;
     const { currencies, isEditing } = this.props;
     return (
-      <div className={ styles.walletForm }>
-        <label htmlFor="description" className={ styles.description }>
-          Descrição da despesa
-          <input
-            className={styles.discriptioninput}
-            data-testid="description-input"
-            type="text"
-            name="description"
-            value={ description }
-            onChange={ this.handleChange }
-            id="description"
-          />
-        </label>
-        <label htmlFor="tag">
-          Categoria da despesa
-          <select
-            data-testid="tag-input"
-            name="tag"
-            onChange={ this.handleChange }
-            value={ tag }
-            id="tag"
+      <div className={styles.formwallet}>
+        <div className={styles.walletForm}>
+          <label htmlFor="description" className={styles.label}>
+            Descrição da despesa
+            <input
+              className={styles.input}
+              data-testid="description-input"
+              type="text"
+              name="description"
+              value={description}
+              onChange={this.handleChange}
+              id="description"
+            />
+          </label>
+          <label
+            htmlFor="tag"
+            className={styles.label}
           >
-            <option value="Alimentação">Alimentação</option>
-            <option value="Lazer">Lazer</option>
-            <option value="Trabalho">Trabalho</option>
-            <option value="Transporte">Transporte</option>
-            <option value="Saúde">Saúde</option>
-          </select>
-        </label>
-        <label htmlFor="value">
-          Valor
-          <input
-            data-testid="value-input"
-            type="number"
-            name="value"
-            value={ value }
-            onChange={ this.handleChange }
-            id="value"
-          />
-        </label>
-        <label htmlFor="method">
-          Método de pagamento
-          <select
-            data-testid="method-input"
-            name="method"
-            onChange={ this.handleChange }
-            value={ method }
-            id="method"
+            Categoria da despesa
+            <select
+              data-testid="tag-input"
+              name="tag"
+              onChange={this.handleChange}
+              value={tag}
+              id="tag"
+              className={styles.input}
+            >
+              <option value="Alimentação">Alimentação</option>
+              <option value="Lazer">Lazer</option>
+              <option value="Trabalho">Trabalho</option>
+              <option value="Transporte">Transporte</option>
+              <option value="Saúde">Saúde</option>
+            </select>
+          </label>
+          <label
+            htmlFor="value"
+            className={styles.label}
           >
-            <option value="Dinheiro">Dinheiro</option>
-            <option value="Cartão de crédito">Cartão de crédito</option>
-            <option value="Cartão de débito">Cartão de débito</option>
-          </select>
-        </label>
+            Valor
+            <input
+              data-testid="value-input"
+              type="number"
+              name="value"
+              value={value}
+              onChange={this.handleChange}
+              id="value"
+              className={styles.value}
+            />
+          </label>
+          <label
+            htmlFor="method"
+            className={styles.label}
+          >
+            Método de pagamento
+            <select
+              data-testid="method-input"
+              name="method"
+              onChange={this.handleChange}
+              value={method}
+              id="method"
+              className={styles.input}
+            >
+              <option value="Dinheiro">Dinheiro</option>
+              <option value="Cartão de crédito">Cartão de crédito</option>
+              <option value="Cartão de débito">Cartão de débito</option>
+            </select>
+          </label>
 
-        <label htmlFor="currency">
-          Moeda
-          <select
-            data-testid="currency-input"
-            name="currency"
-            id="currency"
-            value={ currency }
-            onChange={ this.handleChange }
+          <label
+            htmlFor="currency"
+            className={styles.label}
           >
+            Moeda
+            <select
+              data-testid="currency-input"
+              name="currency"
+              id="currency"
+              value={currency}
+              onChange={this.handleChange}
+              className={styles.input}
+            >
+              {
+                // const coins = currencies.filter((e) => e.code !== 'USDT')
+                currencies.map((currencie) => (
+                  <option value={currencie} key={currencie}>
+                    {currencie}
+                  </option>
+                ))
+              }
+
+            </select>
+          </label>
+        </div>
+        <div className={styles.button}>
+          <button
+            className={styles.btt}
+            onClick={() => {
+              if (!isEditing) {
+                this.saveExpense();
+              } else {
+                this.saveEditon(this.state);
+              }
+            }}
+          >
+
             {
-            // const coins = currencies.filter((e) => e.code !== 'USDT')
-              currencies.map((currencie) => (
-                <option value={ currencie } key={ currencie }>
-                  { currencie }
-                </option>
-              ))
+
+              isEditing ? 'Editar despesa' : 'Adicionar despesa'
             }
-
-          </select>
-        </label>
-
-        <button
-          onClick={ () => {
-            if (!isEditing) {
-              this.saveExpense();
-            } else {
-              this.saveEditon(this.state);
-            }
-          } }
-        >
-
-          {
-
-            isEditing ? 'Editar despesa' : 'Adicionar despesa'
-          }
-        </button>
+          </button>
+        </div>
       </div>
     );
   }

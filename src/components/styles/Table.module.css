@@ -1,0 +1,31 @@
+.table{
+  width: 955px;
+  height: 200px;
+  background: #003BE5;
+  overflow-y: scroll;
+}
+
+.table th{
+  border-left: 2px solid white;
+  width: 111px;
+  height: 27px;
+  color: white;
+
+}
+
+.table td{
+  text-align: center;
+  width: 111px;
+  height: 27px;
+  color: #2FC18C;
+  border-top: 1px solid #2FC18C;
+  margin-left: 0;
+
+}
+
+.btt {
+  border: none;
+  background: none;
+  margin-left: 1em;
+}
+ 

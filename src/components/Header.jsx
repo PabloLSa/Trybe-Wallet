@@ -34,7 +34,6 @@ class Header extends Component {
             { email }
           </span>
         </div>
-
       </div>
     );
   }
