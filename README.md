@@ -1,5 +1,5 @@
 # Trybe-Wallet
-Criei uma aplicação que computa gastos em diferentes moedas e converta tudo para uma única moeda, que pode ser escolhida por quem usa. Para obter as informações sobre nomes, cotações e outros dados sobre as moedas, você irá acessar um endpoint da API de Cotações de Moedas. Tudo isso usando o Redux para compartilhar o estado da sua aplicação entre seus vários componentes.
+Criei uma aplicação que computa gastos em diferentes moedas e converte tudo para uma única moeda, que pode ser escolhida por quem usa. Para obter as informações sobre nomes, cotações e outros dados sobre as moedas, você irá acessar um endpoint da API de Cotações de Moedas. Tudo isso usando o Redux para compartilhar o estado da sua aplicação entre seus vários componentes.
 
 O desenvolvimento desta aplicação foi para testar meu aprendizado em React-Redux.
 
