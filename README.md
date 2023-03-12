@@ -1,3 +1,5 @@
+
+![logo](./src/img/logo.svg)
 # Trybe-Wallet
 Criei uma aplicação que computa gastos em diferentes moedas e converte tudo para uma única moeda, que pode ser escolhida por quem usa. Para obter as informações sobre nomes, cotações e outros dados sobre as moedas, fiz acesso em um endpoint da API de Cotações de Moedas. Tudo isso usando o Redux para compartilhar o estado da minha aplicação entre seus vários componentes.
 
@@ -36,5 +38,4 @@ Conectar Redux aos componentes React.
 
 Adicionar mais de um reducer a uma store.
 
-![logo](./src/img/logo.svg)
 
