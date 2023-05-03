@@ -1,3 +1,5 @@
+/* Estilos padrão */
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +13,6 @@
   justify-content: space-around;
   width: 70vw;
 }
-
 
 .despesas {
   align-items: center;
@@ -41,7 +42,6 @@
   height: 14px;
   line-height: 14px;
   width: 15%;
-
 }
 
 .displayEmail {
@@ -54,3 +54,20 @@
   margin-bottom: 1.5%;
 }
 
+/* Estilos responsivos */
+
+@media screen and (max-width: 768px) {
+  .containerHeader {
+    flex-direction: column;
+    height: auto;
+    width: 90%;
+  }
+  
+  .email {
+    width: 100%;
+  }
+  
+  .displayEmail {
+    margin-top: 1em;
+  }
+}
